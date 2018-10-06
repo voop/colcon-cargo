@@ -49,7 +49,8 @@ class CargoTestTask(TaskExtensionPoint):
         # invoke cargo test
         rc = await check_call(
             self.context,
-            [CARGO_EXECUTABLE, 'test', '-q',
+            [CARGO_EXECUTABLE, 'test-junit',
+                '--name', test_results_path + '/output.xml',
                 '--target-dir', test_results_path],
             cwd=args.path, env=env)
 
